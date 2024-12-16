@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>HTML Test Index</title>
+    
+    <link href="./index.css" rel="stylesheet" />
+    <meta name="viewport" content="initial-scale=1, viewport-fit=cover, width=device-width"></meta>
+    <meta name="mobile-web-app-capable" content="yes"></meta>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></meta>
+    <script>
+      window.addEventListener('gamepadconnected', e => {
+        appendText('gamepadconnected at' + Date.now())
+      })
+
+      window.addEventListener('gamepaddisconnected', e => {
+        appendText('gamepaddisconnected at' + Date.now())
+      })
+      window.onload = () => {
+        appendText(`page loaded at ${Date.now()}`)
+        getGamepads()
+
+        setInterval(() => {
+          getGamepads()
+        }, 10000)
+      }
+
+      const getGamepads = () => {
+        appendText(`javascript is getting gamepads at ${Date.now()}: ${navigator.getGamepads().map(i => i?.id)}`)
+      }
+
+      const appendText = newText => {
+        document.getElementById('text').innerText = document.getElementById('text').innerText + '\n' + newText
+      }
+
+    </script>
+  </head>
+  <body>
+    <div>this code will print 'gamepaddisconnected' when such a event is detected.</div>
+    <div>it tries to call <code>navigator.getGamepads()</code> right after page load and after that it calls  <code>navigator.getGamepads()</code> every 10 seconds.</div>
+    <div>pay attention to the timing when gamepadconnected callback are invoked</div>
+    <hr />
+
+<div id="text"></div>
+  </body>
+</html>

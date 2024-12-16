@@ -1,0 +1,42 @@
+html {
+  min-height: calc(100% + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.evidence-panel-container {
+  top: 20vh;
+  display: grid;
+  grid-template-columns: auto minmax(280px, 1fr) 4vw minmax(35vw, 51vw);
+  grid-template-rows: auto auto 1fr auto;
+  justify-items: start;
+  align-items: flex-start;
+  background-color: #393939;
+  width: 100%;
+  margin-bottom: 0;
+  margin-top: 0;
+  z-index: 4;
+  overflow: hidden;
+  position: relative;
+  height: min(1439px * 0.55 * 9 / 16, 100vh - 56px);
+}
+
+#evidence-panel-description-row {
+  grid-area: 3 / 1 / 4 / 3;
+  overflow: auto;
+  height: 100%;
+  width: calc(100% - 64px);
+  z-index: 3;
+  display: grid;
+  background-color: pink;
+}
+
+.evidence-panel-description-container {
+  font-size: 24px;
+  min-height: 20px;
+}
